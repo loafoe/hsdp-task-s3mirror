@@ -17,7 +17,7 @@ module "siderite_backend" {
 resource "hsdp_function" "s3mirror" {
   name         = "s3mirror"
   docker_image = "philipslabs/hsdp-task-s3mirror:latest"
-  command      = ["/usr/bin/s3mirror.sh"]
+  command      = ["s3mirror.sh"]
 
   environment = {
     # Source bucket details
