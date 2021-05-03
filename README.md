@@ -36,9 +36,7 @@ resource "hsdp_function" "s3mirror" {
   }
 
   # Run every 6 hours
-  schedule {
-    cron = "0 */6 * * *"
-  }
+  schedule = "0 */6 * * *"
 
   backend {
     credentials = module.siderite_backend.credentials
