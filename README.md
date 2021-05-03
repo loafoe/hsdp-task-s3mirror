@@ -37,6 +37,9 @@ resource "hsdp_function" "s3mirror" {
 
   # Run every 6 hours
   schedule = "0 */6 * * *"
+  
+  # Trick to prevent concurrent runs
+  timeout = 21599
 
   backend {
     credentials = module.siderite_backend.credentials
