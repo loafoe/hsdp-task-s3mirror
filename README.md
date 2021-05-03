@@ -36,8 +36,8 @@ resource "hsdp_function" "s3mirror" {
   }
 
   # Run every 6 hours
-  schedule = "0 */6 * * *"
-  
+  run_every = "6h"
+
   # Trick to prevent concurrent runs
   timeout = 21599
 
