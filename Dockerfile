@@ -1,4 +1,4 @@
-FROM philipslabs/siderite:latest-debian as siderite
+FROM philipslabs/siderite:debian-v0.11.0 as siderite
 
 FROM minio/mc:latest
 COPY --from=siderite /app/siderite /usr/bin/siderite
