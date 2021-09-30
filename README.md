@@ -31,7 +31,7 @@ resource "hsdp_function" "s3mirror" {
     dest_access_key = "CCC"
     dest_secret_key = "DDD"
     dest_endpoint = "s3-eu-west-1.amazonaws.com"
-    dest_bucket = "cf-s3-xxx"
+    dest_bucket = "cf-s3-yyy"
     dest_prefix = "/backups/data"
   }
 
