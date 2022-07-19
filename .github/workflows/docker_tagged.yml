@@ -40,7 +40,7 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64
           push: true
-          tags: philipslabs/hsdp-task-s3mirror:${{ steps.vars.outputs.tag }}
+          tags: loafoe/hsdp-task-s3mirror:${{ steps.vars.outputs.tag }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
