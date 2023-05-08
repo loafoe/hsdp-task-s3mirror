@@ -46,6 +46,33 @@ resource "hsdp_function" "s3mirror" {
   }
 }
 ```
+# Using server-side encryption with customer-provided encryption keys (SSE-C)
+Mirror your server-side objects with SSE-C (by default it uses [SSE-S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingServerSideEncryption.html)). Add two variables to `environment` section:
+ - source_sse_customer_key - AES 256-bit, base64-encoded encryption key for source (_Example_: __`openssl rand -base64 32`__). If empty then use SSE-S3 by default.
+ - dest_sse_customer_key - AES 256-bit, base64-encoded encryption key for destination. If empty then use SSE-S3 by default.
+
+```hcl
+resource "hsdp_function" "s3mirror-sse-c" {
+...
+  environment = {
+    # Source bucket details
+    source_access_key = "AAA"
+    source_secret_key = "BBB"
+    source_endpoint = "s3-eu-west-1.amazonaws.com"
+    source_bucket = "cf-s3-xxx"
+    source_prefix = "/data"
+    source_sse_customer_key = "4GRsukWAbk8TwphV5X/2LnHHE3gFyifRCB0lS98Ztr4="
+    
+    # Destination bucket details
+    dest_access_key = "CCC"
+    dest_secret_key = "DDD"
+    dest_endpoint = "s3-eu-west-1.amazonaws.com"
+    dest_bucket = "cf-s3-yyy"
+    dest_prefix = "/backups/data"
+  }
+...
+}
+```
 
 # Contact / Getting help
 
